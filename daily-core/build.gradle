@@ -1,0 +1,27 @@
+bootRepackage {
+    enabled = false
+}
+
+buildscript {
+    repositories { mavenCentral() }
+}
+
+apply plugin: "io.spring.dependency-management"
+
+ext { springBootVersion = '2.1.3.RELEASE' }
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.8
+
+repositories { mavenCentral() }
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+dependencyManagement {
+    imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}") }
+}
